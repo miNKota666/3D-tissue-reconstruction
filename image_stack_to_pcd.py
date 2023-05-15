@@ -8,12 +8,12 @@ import open3d as o3d
 import pyvista as pv
 import plotly.express as px
 import matplotlib.pyplot as plt
-
+#comment
 
 def get_files_abs_paths (
 		folder_path: str
 		):
-
+	""" """
 	print (f"Opened folder:\n{folder_path}")
 	file_names = os.listdir (folder_path)
 	print (f"There are {len (file_names)} files in the folder\n")
