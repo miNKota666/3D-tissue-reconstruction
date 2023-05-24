@@ -67,6 +67,7 @@ def create_layer (
         ):
     """ Get numpy array with shape (n, 2). The numpy array with shape (n, 1) is created, filled with ones and added
     to 1st one. The 3d column represents the layer number.
+
     :param thresholding_result: a NumPy array contained the threshold result.
     :param layer_num: an integer corresponded to the layer's number.
     :return layer: a NumPy object (np.array) contained a set of reshaped layers for the further processing.
