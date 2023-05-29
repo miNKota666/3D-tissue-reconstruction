@@ -118,11 +118,11 @@ def process_files_in_folder (
 def tissue_reconstruction (
         stack: dict
         ):
-    """ A 3d numpy array filled with ones was created. Then step-by-step it is filled from the top with layers taken
-    from the stack_layers dictionary.
+    """ A numpy array with the shape of 3 filled with ones was created. Subsequently, layer arrays from dict are
+    vertically stacked one by one.
 
     :param dictionary: a dictionary contained the set of layer arrays.
-    :return temp_df: a NumPy object (3-dimensional array) contained the combined layer.
+    :return temp_df: a NumPy object (array, shape = 3) contained 3d point's coordinates.
     """
     temp_df = np.ones (3)
     print (f'The df size is: {temp_df.shape}')
