@@ -122,7 +122,7 @@ def tissue_reconstruction (
     vertically stacked one by one.
 
     :param dictionary: a dictionary contained the set of layer arrays.
-    :return temp_df: a NumPy object (array, shape = 3) contained 3d point's coordinates.
+    :return temp_df: a NumPy object contained 3d point's coordinates.
     """
     temp_df = np.ones (3)
     print (f'The df size is: {temp_df.shape}')
