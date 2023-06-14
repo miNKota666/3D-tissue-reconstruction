@@ -42,10 +42,8 @@ def image_processing (
 			maxval = 255,
 			type = cv2.THRESH_BINARY_INV | cv2.THRESH_OTSU
 			)
-	print ("[INFO] Otsu's thresholding value: {}".format (T))
 
 	threshInv = np.argwhere (threshInv == 0)
-	print ("[INFO] Otsu's thresholding completed\n")
 
 	return threshInv
 
@@ -55,12 +53,12 @@ def create_layer (
 		layer_num: int
 		):
 
-	layer_arr = np.ones (thresholding_result.shape[0]) * layer_num
+	layer_arr = np.ones (thresholding_result.shape [0]) * layer_num
 
 	layer = np.hstack (
 			(
-				thresholding_result.reshape(-1,2),
-				layer_arr.reshape(-1,1)
+				thresholding_result.reshape (-1, 2),
+				layer_arr.reshape (-1, 1)
 				)
 			)
 
@@ -78,7 +76,7 @@ def process_files_in_folder (
 	stack_layers = {}
 	for file_index, file_path in enumerate (files_path_list):
 
-		print (f"[INFO] File [{file_index+1}/{len (files_path_list)}] is processing")
+		print (f"\r[INFO] File [{file_index + 1}/{len (files_path_list)}] is processing", end = '\r')
 
 		temp_res = image_processing (file_path)
 		temp_res = create_layer (
@@ -89,7 +87,7 @@ def process_files_in_folder (
 		temp_name = os.path.basename (file_path).split ('/') [-1] [:-4]
 		stack_layers [temp_name] = temp_res
 
-	print('PROCESSING COMPLETED')
+	print ('\nPROCESSING COMPLETED')
 
 	return stack_layers
 
@@ -99,18 +97,14 @@ def tissue_reconstruction (
 		):
 
 	temp_df = np.ones (3)
-	print (f'The df size is: {temp_df.shape}')
 
-	for layer_index, layer_name in enumerate(stack.keys()):
-
-		print (f'Layer index is: [{layer_index+1}/{len (stack)}]')
-
+	for layer_index, layer_name in enumerate (stack.keys ()):
+		print (f'\rLayer index is: [{layer_index + 1}/{len (stack)}]', end = '\r')
 		temp_df = np.vstack (
 				(
-					stack[layer_name],
+					stack [layer_name],
 					temp_df
 					)
 				)
-		print (f'The df size is: {temp_df.shape}')
-
+	print('Completed')
 	return temp_df
